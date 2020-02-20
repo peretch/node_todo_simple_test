@@ -17,7 +17,7 @@ const create = desc => {
     return task;
 }
 
-const list = () => {
+const getList = () => {
     load();
     return tasksData;
 }
@@ -42,5 +42,5 @@ const save = () => {
 
 module.exports = {
     create,
-    list
+    getList
 };
