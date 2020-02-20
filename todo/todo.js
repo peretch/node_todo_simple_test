@@ -17,6 +17,11 @@ const create = desc => {
     return task;
 }
 
+const list = () => {
+    load();
+    return tasksData;
+}
+
 const load = () => {
     try{
         tasksData = require('../db/data.json');
@@ -36,5 +41,6 @@ const save = () => {
 }
 
 module.exports = {
-    create
+    create,
+    list
 };

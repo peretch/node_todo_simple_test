@@ -1,5 +1,5 @@
 const { argv } = require('./config/yargs');
-const { create } = require('./todo/todo');
+const { create, list } = require('./todo/todo');
 
 const command = argv._[0];
 
@@ -9,7 +9,13 @@ switch(command){
         console.log(newTask);
     break;
     case 'list':
-        console.log('list task');
+        const tasksList = list();
+        const doneTasks = tasksList.filter( task => task.completed === true);
+        const pendingTasks = tasksList.filter( task => task.completed === false);
+        console.log('--PENDING--');
+        pendingTasks.forEach( task => console.log(task));
+        console.log('--DONE--');
+        doneTasks.forEach( task => console.log(task));
     break;
     case 'update':
         console.log('update task');
