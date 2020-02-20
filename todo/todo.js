@@ -1,15 +1,16 @@
 const fs = require('fs');
 
-let tasksList = [];
+let tasksData = [];
 
 const create = desc => {
     load();
+
     const task = {
         desc,
         completed: false
     }
 
-    tasksList.push(task);
+    tasksData.push(task);
 
     save();
 
@@ -17,11 +18,15 @@ const create = desc => {
 }
 
 const load = () => {
-    tasksList = require('../db/data.json');
-}
+    try{
+        tasksData = require('../db/data.json');
+    }catch (err) {
+        tasksData = [];
+    }
+};
 
 const save = () => {
-    const data = JSON.stringify(tasksList);
+    const data = JSON.stringify(tasksData);
 
     fs.writeFile(`db/data.json`, data, (err) => {
         if (err){
