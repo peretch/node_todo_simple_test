@@ -14,7 +14,7 @@ const update_options = {
     },
     completed: {
         default: true,
-        alias: 's',
+        alias: 'c',
         description: 'Task completed (default=true)'
     }
 }

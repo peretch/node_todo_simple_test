@@ -2,11 +2,11 @@ const fs = require('fs');
 
 let tasksData = [];
 
-const create = desc => {
+const create = description => {
     load();
 
     const task = {
-        desc,
+        description,
         completed: false
     }
 
@@ -15,6 +15,16 @@ const create = desc => {
     save();
 
     return task;
+}
+
+const update = (description, completed = true) => {
+    load();
+
+    let index = tasksData.findIndex( task => task.description === description );
+    tasksData[index].completed = completed;
+
+    save();
+    return tasksData[index];
 }
 
 const getList = () => {
@@ -42,5 +52,6 @@ const save = () => {
 
 module.exports = {
     create,
-    getList
+    getList,
+    update
 };
