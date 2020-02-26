@@ -9,6 +9,7 @@ switch(command){
         let newTask = create(argv.description);
         console.log(newTask);
     break;
+
     case 'list':
         const tasksList = getList();
         const doneTasks = tasksList.filter( task => task.completed === 'true');
@@ -18,14 +19,17 @@ switch(command){
         console.log('--DONE--'.green);
         doneTasks.forEach( task => console.log(task));
     break;
+
     case 'update':
         const updatedTask = update(argv.description, argv.completed);
         console.log(updatedTask);
     break;
+
     case 'delete':
         const deleted = deleteTask(argv.description);
         console.log(deleted);
     break;
+
     default:
         console.log('comman not found');
     break;
