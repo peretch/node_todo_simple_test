@@ -38,7 +38,7 @@ const load = () => {
     }catch (err) {
         tasksData = [];
     }
-};
+}
 
 const save = () => {
     const data = JSON.stringify(tasksData);
@@ -50,8 +50,17 @@ const save = () => {
     });
 }
 
+const deleteTask = description => {
+    load();
+    const originalSize = tasksData.length;
+    tasksData = tasksData.filter( task => task.description !== description );
+    save();
+    return originalSize > tasksData.length;
+}
+
 module.exports = {
     create,
     getList,
-    update
+    update,
+    deleteTask
 };

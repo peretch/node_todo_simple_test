@@ -1,4 +1,4 @@
-const create_options = {
+const createOptions = {
     description: {
         demand: true,
         alias: 'd',
@@ -6,7 +6,7 @@ const create_options = {
     }
 }
 
-const update_options = {
+const updateOptions = {
     description: {
         demand: true,
         alias: 'd',
@@ -19,6 +19,14 @@ const update_options = {
     }
 }
 
+const deleteOptions = {
+    description: {
+        demand: true,
+        alias: 'd',
+        description: 'Task content'
+    }
+}
+
 const list_options = {
     all: {
         default: false,
@@ -28,8 +36,9 @@ const list_options = {
 }
 
 const argv = require('yargs')
-    .command('create', 'Creates one task', create_options)
-    .command('update', 'Updates one task', update_options)
+    .command('create', 'Creates one task', createOptions)
+    .command('update', 'Updates one task', updateOptions)
+    .command('delete', 'Deletes one task', deleteOptions)
     .command('list', 'Returns all tasks unfinished', list_options)
     .help()
     .argv;
